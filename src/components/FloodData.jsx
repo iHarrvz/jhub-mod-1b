@@ -11,18 +11,12 @@ export default function FloodData() {
     const fetchData = async () => {
       const data = await getFloodData();
       const items = data?.items || [];
-
-      console.log("Fetched Flood Data:", items);
-
       setFloodData(items);
       setFilteredData(items);
 
       const uniqueLocations = Array.from(
         new Set(items.map((flood) => flood.floodArea?.county).filter(Boolean))
       );
-
-      console.log("Extracted Locations:", uniqueLocations);
-
       setLocations(uniqueLocations);
     };
 
